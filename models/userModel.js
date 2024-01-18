@@ -59,6 +59,46 @@ const userSchema = new mongoose.Schema({
 });
 
 
+// Hash the password before saving
+userSchema.pre("save", async function (next){
+
+    if (!this.isModified("password")){
+        next();
+    }
+
+    this.password = await bcryptjs.hash(this.password, 10);
+})
+
+
+// For comparing hash and password
+userSchema.methods.comparePassword = async function(enteredPassword) {
+    return await bcryptjs.compare(enteredPassword, this.password);
+}
+
+
+// To generate a JWT token
+userSchema.methods.getJWTToken = function () {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES
+    })
+}
+
+// Generates and returns a reset password token
+userSchema.methods.resetPasswordTokenGenerator = function () {
+    
+    const resetToken = crypto.randomBytes(20).toString("hex");
+
+    this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+    this.resetPasswordExpire = Date.now() + 15 * 60 * 1000
+
+    return resetToken;
+
+}
+
 
 
 module.exports = mongoose.model("User", userSchema);
