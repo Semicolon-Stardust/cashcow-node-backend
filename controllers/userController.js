@@ -10,16 +10,16 @@ const crypto = require("crypto");
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
-    const {name, email, password} = req.body;
+    const {name, email, password, age, primaryCurrency, ocupation, role} = req.body;
 
     const user = await User.create({
         name,
         email,
         password,
-        avatar: {
-            public_id: "this is a sample id",
-            url: "profilePicURL"
-        }
+        age,
+        primaryCurrency,
+        ocupation,
+        role,
     }); 
 
     sendToken(user, 201, res);
@@ -33,6 +33,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
     const {email, password} = req.body
+
     if (!email || !password) return next(new ErrorHandler("Enter Email and Password", 400));
 
     const user = await User.findOne({email}).select("+password")

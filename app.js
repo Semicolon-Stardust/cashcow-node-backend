@@ -1,10 +1,15 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 // Configuration
 const app = express();
+const corsOption = {
+    origin: '*',
+}
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(corsOption));
 
 // Route Imports
 const user = require("./routes/userRoute");

@@ -33,19 +33,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please select your primary currency"],
     },
-    occupation: {
+    ocupation: {
         type: String,
-        required: [true, "Please enter your occupation"],
-    },
-    avatar: {
-        public_id: {
-            type: String,
-            required: true
-        },
-        url: {
-            type: String,
-            required: true
-        }
+        required: [true, "Please enter your ocupation"],
     },
     role: {
         type: String,
