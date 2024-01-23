@@ -23,11 +23,9 @@ const userSchema = new mongoose.Schema({
         min: [8, "Please provide a password of atleast 8 Characters"],
         select: false
     },
-    age: {
-        type: Number,
-        required: [true, "Please provide your age"],
-        min: [7, "You must be atleast 7 years old to register"],
-        max: [130, "You must be under 130 years old to register"]
+    dob: {
+        type: Date,
+        required: [true, "Please provide your Date of Birth"],
     },
     primaryCurrency: {
         type: String,

@@ -10,16 +10,15 @@ const crypto = require("crypto");
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
-    const {name, email, password, age, primaryCurrency, ocupation, role} = req.body;
+    const {username, email, password, dob, primaryCurrency, ocupation} = req.body;
 
     const user = await User.create({
-        name,
+        name: username,
         email,
         password,
-        age,
+        dob,
         primaryCurrency,
-        ocupation,
-        role,
+        ocupation
     }); 
 
     sendToken(user, 201, res);
