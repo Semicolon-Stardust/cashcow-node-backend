@@ -5,10 +5,11 @@ const cors = require("cors");
 // Configuration
 const app = express();
 const corsOption = {
-    origin: '*',
+    origin: ['http://localhost:5173'],
 }
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({extended: false}))
 app.use(cors(corsOption));
 
 // Route Imports
