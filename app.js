@@ -5,7 +5,8 @@ const cors = require("cors");
 // Configuration
 const app = express();
 const corsOption = {
-    origin: ['http://localhost:5173'],
+    credentials: true,
+    origin: 'http://localhost:5173',
 }
 app.use(express.json());
 app.use(cookieParser());
