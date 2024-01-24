@@ -7,7 +7,7 @@ const ApiFeatures = require('../utils/apiFeatures');
 
 
 
-// Create new transaction => /api/v1/transaction/new   -- ADMIN ONLY
+// Create new transaction => /api/v1/transaction/new 
 exports.createTransaction = catchAsyncErrors(async (req, res, next) => {
 
         req.body.user = req.user.id;
@@ -18,6 +18,7 @@ exports.createTransaction = catchAsyncErrors(async (req, res, next) => {
             success: true,
             transaction
         })
+
 
 })
 
