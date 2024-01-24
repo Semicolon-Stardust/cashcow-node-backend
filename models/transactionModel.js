@@ -4,7 +4,6 @@ const transactionSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please enter transaction name"],
-        trim: true,
     },
     description: {
         type: String,

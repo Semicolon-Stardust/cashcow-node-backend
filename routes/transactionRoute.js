@@ -12,11 +12,11 @@ const {isUserAuthenticated, authorizeRoles} = require("../middleware/auth");
 const router = express.Router();
 
 
-router.route("/transactions").get(getAllTransactions);
-router.route("/transaction/new").post(isUserAuthenticated, authorizeRoles("admin"), createTransaction);
-router.route("/transaction/:id")
-    .put(isUserAuthenticated, authorizeRoles("admin"), updateTransaction)
-    .delete(isUserAuthenticated, authorizeRoles("admin"), deleteTransaction)
+router.route("/transactions").get(isUserAuthenticated, getAllTransactions);
+router.route("/new").post(isUserAuthenticated, createTransaction);
+router.route("/:id")
+    .put(isUserAuthenticated, updateTransaction)
+    .delete(isUserAuthenticated, deleteTransaction)
     .get(getSingleTransaction);
 
 
