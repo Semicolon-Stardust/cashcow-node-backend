@@ -4,8 +4,9 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
+import { IUser } from "../interfaces/schemaInterfaces.js";
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema<IUser>({
 
     name: {
         type: String,
@@ -90,4 +91,5 @@ userSchema.methods.resetPasswordTokenGenerator = function () {
 
 
 
-module.exports = mongoose.model("User", userSchema);
+const userModel = mongoose.model("User", userSchema);
+export default userModel;

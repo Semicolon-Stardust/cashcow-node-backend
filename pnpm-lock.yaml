@@ -36,7 +36,7 @@ importers:
         specifier: ^6.13.0
         version: 6.13.0(@aws-sdk/client-sso-oidc@3.592.0)
       nodemailer:
-        specifier: ^6.9.1
+        specifier: ^6.9.13
         version: 6.9.13
       nodemon:
         specifier: ^2.0.20
@@ -63,6 +63,9 @@ importers:
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
+      '@types/nodemailer':
+        specifier: ^6.4.15
+        version: 6.4.15
       '@types/validator':
         specifier: ^13.11.10
         version: 13.11.10
@@ -391,6 +394,9 @@ packages:
 
   '@types/node@20.14.2':
     resolution: {integrity: sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==}
+
+  '@types/nodemailer@6.4.15':
+    resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
 
   '@types/qs@6.9.15':
     resolution: {integrity: sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==}
@@ -1977,6 +1983,10 @@ snapshots:
   '@types/node@20.14.2':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/nodemailer@6.4.15':
+    dependencies:
+      '@types/node': 20.14.2
 
   '@types/qs@6.9.15': {}
 
