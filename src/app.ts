@@ -3,7 +3,11 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 import errorMiddleware from './middleware/error.js';
+
+// Route Imports
 import baseRouter from './routes/baseRoutes.js';
+import userRouter from './routes/userRoutes.js';
+
 
 
 // Init
@@ -12,7 +16,6 @@ const corsOptions = {
     origin: "*",
     credentials: true,
 }
-
 
 
 // Middlewares
@@ -25,9 +28,9 @@ app.use(cors(corsOptions));
 app.use(errorMiddleware);
 
 
-
 // Routes
 app.use('/api/v1', baseRouter);
+app.use('/api/v1/users', userRouter);
 
 
 
