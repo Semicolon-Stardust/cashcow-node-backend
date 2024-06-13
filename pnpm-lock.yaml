@@ -33,7 +33,7 @@ importers:
         specifier: ^9.0.0
         version: 9.0.2
       mongoose:
-        specifier: ^6.5.2
+        specifier: ^6.13.0
         version: 6.13.0(@aws-sdk/client-sso-oidc@3.592.0)
       nodemailer:
         specifier: ^6.9.1
