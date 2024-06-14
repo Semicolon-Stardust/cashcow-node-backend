@@ -1,3 +1,5 @@
+import { ObjectId } from "mongoose";
+
 export interface IUser extends Document {
     name: string;
     email: string;
@@ -12,6 +14,17 @@ export interface IUser extends Document {
     getJWTToken: () => string;
     resetPasswordTokenGenerator: () => string;
 }
+
+export interface ITransaction extends Document {
+    name: string,
+    description: string,
+    amount: number,
+    category: string,
+    user: ObjectId,
+    family: ObjectId,
+    createdAt: Date
+}
+
 
 export interface IUserAuthRequest extends Request {
     user: string // or any other type

@@ -2,8 +2,8 @@
 /.vscode
 /*.env
 */*.env
-/backend/config/config.env
-./backend/config/config.env
+/config/config.env
+./config/config.env
 /dist
 ./dist
 */dist
