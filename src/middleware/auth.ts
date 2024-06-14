@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import {Request, Response, NextFunction} from "express";
 
 // Model Imports
-import User from "../models/userModel.js";
+import User from "../models/userAuthModel.js";
 
 export const isUserAuthenticated = catchAsyncErrors( async (req: any, res: Response, next:NextFunction) => {
 

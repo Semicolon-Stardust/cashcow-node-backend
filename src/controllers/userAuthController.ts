@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import ErrorHandler from "../utils/errorHandler.js";
 import catchAsyncErrors from "../middleware/catchAsyncErrors.js";
-import User from "../models/userModel.js";
+import User from "../models/userAuthModel.js";
 import sendToken from "../utils/generateJWT.js";
 import sendMail from "../utils/sendMail.js";
 import crypto from "crypto";

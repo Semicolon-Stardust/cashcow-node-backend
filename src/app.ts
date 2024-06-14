@@ -6,7 +6,7 @@ import errorMiddleware from './middleware/error.js';
 
 // Route Imports
 import baseRouter from './routes/baseRoutes.js';
-import userRouter from './routes/userRoutes.js';
+import userAuthRouter from './routes/userAuthRoutes.js';
 
 
 
@@ -30,7 +30,7 @@ app.use(errorMiddleware);
 
 // Routes
 app.use('/api/v1', baseRouter);
-app.use('/api/v1/users', userRouter);
+app.use('/api/v1/users', userAuthRouter);
 
 
 
