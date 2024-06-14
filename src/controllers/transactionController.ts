@@ -8,16 +8,14 @@ import ApiFeatures from '../utils/apiFeatures.js';
 // Create new transaction => /api/v1/transaction/new 
 export const createTransaction = catchAsyncErrors(async (req:any, res:Response, next:NextFunction) => {
 
-        req.body.user = req.user.id;
-    
-        const transaction = await Transaction.create(req.body);
+    req.body.user = req.user.id;
 
-        res.status(201).json({
-            success: true,
-            transaction
-        })
+    const transaction = await Transaction.create(req.body);
 
-
+    res.status(201).json({
+        success: true,
+        transaction
+    })
 })
 
 

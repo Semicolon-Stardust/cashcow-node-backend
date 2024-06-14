@@ -11,7 +11,9 @@ import crypto from "crypto";
 // Register a User
 export const registerUser = catchAsyncErrors(async (req:Request, res:Response, next:NextFunction) => {
 
-    const {name, email, password, dob, primaryCurrency, ocupation} = req.body;
+    let {name, email, password, dob, primaryCurrency, ocupation, role} = req.body;
+
+    if (!role) role = "user";
 
     const user = await User.create({
         name,
@@ -19,11 +21,11 @@ export const registerUser = catchAsyncErrors(async (req:Request, res:Response, n
         password,
         dob,
         primaryCurrency,
-        ocupation
+        ocupation,
+        role
     }); 
 
     sendToken(user, 201, res);
-
 })
 
 
