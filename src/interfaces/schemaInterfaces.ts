@@ -25,6 +25,14 @@ export interface ITransaction extends Document {
     createdAt: Date
 }
 
+export interface IFamily extends Document {
+    name: string,
+    description: string,
+    members: ObjectId[],
+    category: string,
+    admin: ObjectId,
+    createdAt: Date
+}
 
 export interface IUserAuthRequest extends Request {
     user: string // or any other type

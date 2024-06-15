@@ -105,7 +105,7 @@ export const getSingleTransaction = catchAsyncErrors(async (req: Request, res: R
 
 
 
-//  Fetch all transaction details => /api/v1/transactions/
+//  Fetch all transaction details => /api/v1/transactions/ (Admin Only)
 export const getAllTransactions = catchAsyncErrors(async (req: Request, res: Response, next: NextFunction) => {
 
     const resultPerPage = 5;
