@@ -16,12 +16,12 @@ export interface IUser extends Document {
 }
 
 export interface ITransaction extends Document {
-    name: string,
+    title: string,
     description: string,
     amount: number,
     category: string,
     user: ObjectId,
-    family: ObjectId,
+    family: ObjectId | null,
     createdAt: Date
 }
 

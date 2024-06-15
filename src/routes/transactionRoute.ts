@@ -1,7 +1,8 @@
 import express from 'express'
 import { 
     getAllTransactions, 
-    getSingleTransaction, 
+    getSingleTransaction,
+    getUserTransactions,
     createTransaction, 
     updateTransaction, 
     deleteTransaction 
@@ -12,8 +13,9 @@ import {isUserAuthenticated, authorizeRoles} from "../middleware/auth.js";
 const transactionRouter = express.Router();
 
 
-transactionRouter.route("/transactions").get(isUserAuthenticated, getAllTransactions);
+transactionRouter.route("/all").get(isUserAuthenticated, authorizeRoles("admin"), getAllTransactions);
 transactionRouter.route("/new").post(isUserAuthenticated, createTransaction);
+transactionRouter.route("/me").post(isUserAuthenticated, getUserTransactions);
 transactionRouter.route("/:id")
     .put(isUserAuthenticated, updateTransaction)
     .delete(isUserAuthenticated, deleteTransaction)
