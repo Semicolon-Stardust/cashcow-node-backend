@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 import { ITransaction } from "../interfaces/schemaInterfaces.js";
 
 const transactionSchema = new mongoose.Schema<ITransaction>({
-    name: {
+    title: {
         type: String,
-        required: [true, "Please enter transaction name"],
+        required: [true, "Please enter transaction title"],
     },
     description: {
         type: String,
