@@ -15,7 +15,7 @@ const transactionRouter = express.Router();
 
 transactionRouter.route("/all").get(isUserAuthenticated, authorizeRoles("admin"), getAllTransactions);
 transactionRouter.route("/new").post(isUserAuthenticated, createTransaction);
-transactionRouter.route("/me").post(isUserAuthenticated, getUserTransactions);
+transactionRouter.route("/me").get(isUserAuthenticated, getUserTransactions);
 transactionRouter.route("/:id")
     .put(isUserAuthenticated, updateTransaction)
     .delete(isUserAuthenticated, deleteTransaction)

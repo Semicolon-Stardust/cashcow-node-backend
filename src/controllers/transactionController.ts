@@ -3,6 +3,7 @@ import Transaction from '../models/transactionModel.js';
 import ErrorHandler from '../utils/errorHandler.js';
 import catchAsyncErrors from '../middleware/catchAsyncErrors.js';
 import ApiFeatures from '../utils/apiFeatures.js';
+import mongoose from 'mongoose';
 
 
 // Create new transaction => /api/v1/transaction/new 
@@ -75,7 +76,7 @@ export const deleteTransaction = catchAsyncErrors(async (req: Request, res: Resp
 
 // Fetch users transactions
 export const getUserTransactions = catchAsyncErrors(async (req: any, res: Response, next: NextFunction) => {
-    const user = req.user.id;
+    const user: mongoose.Schema.Types.ObjectId = req.user.id;
     const resultsPerPage = 5;
     const transactions = await Transaction.find({user});
 
