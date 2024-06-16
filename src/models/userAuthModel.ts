@@ -7,7 +7,12 @@ import crypto from "crypto";
 import { IUser } from "../interfaces/schemaInterfaces.js";
 
 const userSchema = new mongoose.Schema<IUser>({
-
+    username: {
+        type: String,
+        required: [true, "Please Enter a Username"],
+        unique: true,
+        min: [2, "Please provide a longer username"]
+    },
     name: {
         type: String,
         required: [true, "Please Enter a Name"],

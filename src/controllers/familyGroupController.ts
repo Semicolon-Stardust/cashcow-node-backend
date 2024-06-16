@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import catchAsyncErrors from '../middleware/catchAsyncErrors.js'
-import { ObjectId } from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 import Family from '../models/familyGroupModel.js';
+import ErrorHandler from '../utils/errorHandler.js';
 
 
 interface ICreateFamilyGroup{
@@ -26,7 +27,7 @@ export const createFamilyGroup = catchAsyncErrors(async (req: any, res: Response
         members = [admin];
         memberCount = 1;
     } else {
-        memberCount = members.unshift(admin);
+        memberCount = members.unshift(admin)
     }
 
     const family = await Family.create({
@@ -58,18 +59,28 @@ export const getUserFamilyGroups = catchAsyncErrors(async (req: any, res: Respon
 })
 
 
-export const addMemberToFamily = catchAsyncErrors(async (req: Request, res: Response, next: NextFunction) => {
+export const addMemberToFamily = catchAsyncErrors(async (req: any, res: Response, next: NextFunction) => {
     const { id } = req.params;
-    const { memberId } = req.body;
+    let { memberId, role } = req.body;
+
+    if (!role) role = "member"
+
+    if (memberId === req.user.id) {
+        return next(new ErrorHandler("User is already an admin", 400));
+    }
 
     const family = await Family.findById(id);
 
     if (!family) {
-        return next(new Error("Family not found"));
+        return next(new ErrorHandler("Family not found", 404));
+    }
+
+    if (family.admin.includes(memberId)) {
+        return next(new ErrorHandler("User is already an admin", 400));
     }
 
     if (family.members.includes(memberId)) {
-        return next(new Error("Member already exists"));
+        return next(new ErrorHandler("Member already exists", 400));
     }
 
     family.members.push(memberId);

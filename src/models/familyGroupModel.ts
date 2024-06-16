@@ -19,7 +19,7 @@ const familySchema = new mongoose.Schema<IFamily>({
         required: [true, "Please select category for this family"],
     },
     admin:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: [mongoose.Schema.Types.ObjectId],
         required: true
     },
     createdAt: {

@@ -1,6 +1,7 @@
 import { ObjectId } from "mongoose";
 
 export interface IUser extends Document {
+    username: string;
     name: string;
     email: string;
     password: string;
@@ -30,10 +31,7 @@ export interface IFamily extends Document {
     description: string,
     members: ObjectId[],
     category: string,
-    admin: ObjectId,
+    admin: ObjectId[],
     createdAt: Date
 }
 
-export interface IUserAuthRequest extends Request {
-    user: string // or any other type
-  }
