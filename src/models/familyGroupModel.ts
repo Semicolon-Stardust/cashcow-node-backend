@@ -11,15 +11,15 @@ const familySchema = new mongoose.Schema<IFamily>({
         type: String,
     },
     members: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: [String],
         required: [true, "Please enter family members"],
     },
     category: {
         type: String,
         required: [true, "Please select category for this family"],
     },
-    admin:{
-        type: [mongoose.Schema.Types.ObjectId],
+    admins:{
+        type: [String],
         required: true
     },
     createdAt: {

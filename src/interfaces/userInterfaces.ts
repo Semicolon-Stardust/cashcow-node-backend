@@ -1,9 +1,9 @@
 import { ObjectId } from "mongoose";
 
-export interface ICreateFamilyGroup{
+export interface IUserFamilGroups{
+    familyID: ObjectId,
     name: string,
     description: string,
-    members: string[],
     category: string,
-    admins: string[]
+    familyRole: string
 }

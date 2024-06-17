@@ -5,6 +5,31 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
 import { IUser } from "../interfaces/schemaInterfaces.js";
+import { IUserFamilGroups } from "../interfaces/userInterfaces.js";
+
+
+const familySchema = new mongoose.Schema<IUserFamilGroups>({
+    familyID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "Please provide a Family ID"]
+    },
+    name: {
+        type: String,
+        required: [true, "Please provide a Family Name"]
+    },
+    description: {
+        type: String,
+        required: [true, "Please provide a Family Description"]
+    },
+    category: {
+        type: String,
+        required: [true, "Please provide a Family Category"]
+    },
+    familyRole: {
+        type: String,
+        required: [true, "Please provide a Family Role"],
+    }
+})
 
 const userSchema = new mongoose.Schema<IUser>({
     username: {
@@ -45,6 +70,10 @@ const userSchema = new mongoose.Schema<IUser>({
     role: {
         type: String,
         default: "user"
+    },
+    familyGroups: {
+        type: [familySchema],
+        default: []
     },
 
     

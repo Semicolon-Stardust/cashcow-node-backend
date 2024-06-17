@@ -1,4 +1,5 @@
 import { ObjectId } from "mongoose";
+import { IUserFamilGroups } from "./userInterfaces.js";
 
 export interface IUser extends Document {
     username: string;
@@ -9,6 +10,7 @@ export interface IUser extends Document {
     primaryCurrency: string;
     ocupation: string;
     role: string;
+    familyGroups: IUserFamilGroups[];
     resetPasswordToken: string | undefined;
     resetPasswordExpire: Date | undefined;
     comparePassword: (enteredPassword: string) => Promise<boolean>;
@@ -29,9 +31,9 @@ export interface ITransaction extends Document {
 export interface IFamily extends Document {
     name: string,
     description: string,
-    members: ObjectId[],
+    members: String[],
     category: string,
-    admin: ObjectId[],
+    admins: String[],
     createdAt: Date
 }
 
