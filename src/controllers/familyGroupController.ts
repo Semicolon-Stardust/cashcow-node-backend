@@ -3,14 +3,9 @@ import catchAsyncErrors from '../middleware/catchAsyncErrors.js'
 import mongoose, { ObjectId } from 'mongoose';
 import Family from '../models/familyGroupModel.js';
 import ErrorHandler from '../utils/errorHandler.js';
+import { ICreateFamilyGroup } from '../interfaces/familyInterfaces.js';
 
 
-interface ICreateFamilyGroup{
-    name: string,
-    description: string,
-    members: ObjectId[],
-    category: string
-}
 
 
 // ---------------- User Options ---------------- //
@@ -18,7 +13,7 @@ interface ICreateFamilyGroup{
 //     Create a new family group
 export const createFamilyGroup = catchAsyncErrors(async (req: any, res: Response, next: NextFunction) => {
 
-    let { name, description, members, category }: ICreateFamilyGroup = req.body;
+    let { name, description, members, category, admins }: ICreateFamilyGroup = req.body;
 
     let admin: ObjectId = req.user.id;
 
@@ -35,7 +30,7 @@ export const createFamilyGroup = catchAsyncErrors(async (req: any, res: Response
         description,
         members,
         category,
-        admin
+        admins
     });
 
     res.status(201).json({
